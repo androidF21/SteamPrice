@@ -72,7 +72,7 @@ Steam Money is an Application that will allow users to check the price for the i
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="https://imgur.com/a/h8zOmG1" width=600>
+<img src="https://imgur.com/a/h8zOmG1.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
