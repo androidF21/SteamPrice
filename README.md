@@ -1,7 +1,7 @@
 Original App Design Project - README Template
 ===
 
-# Steam Money
+# CounterPrice
 
 ## Table of Contents
 1. [Overview](#Overview)
