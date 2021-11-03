@@ -1,7 +1,7 @@
 Original App Design Project - README Template
 ===
 
-# CounterPrice
+# SteamPrice
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -72,7 +72,7 @@ Steam Money is an Application that will allow users to check the price for the i
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="https://www.figma.com/file/OWiF97lcB3pdI49SoBXHmX/SteamPrice-Design-Theory?node-id=0%3A1" width=600>
+<img src="https://imgur.com/a/h8zOmG1" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
