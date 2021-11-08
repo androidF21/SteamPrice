@@ -71,12 +71,13 @@ Steam Money is an Application that will allow users to check the price for the i
 * Feed <-> Search <-> Profile (All pages can navigate to eachother with botton nav)
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
+Direct link: https://www.figma.com/file/OWiF97lcB3pdI49SoBXHmX/SteamPrice-Design-Theory?node-id=0%3A1
 <img src="https://github.com/androidF21/SteamPrice/blob/main/digitalwireframe.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://github.com/androidF21/SteamPrice/blob/main/digitalwireframe.png" width=600>
+<img src="https://github.com/androidF21/SteamPrice/blob/main/steampricewalkthrough.gif" width=600>
 ### [BONUS] Interactive Prototype
+
 https://www.figma.com/file/OWiF97lcB3pdI49SoBXHmX/SteamPrice-Design-Theory?node-id=0%3A1
 
 ## Schema 
