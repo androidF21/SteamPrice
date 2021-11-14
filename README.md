@@ -100,6 +100,13 @@ Item
 | item picture  | File  | picture of the item  |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+* Login Page
+   * (Read/GET) Query logged in user object
+* Feed Page
+   * (Read/GET) Query items currently in the market
+* Item Detail Page
+   * (Read/GET) Query specific item that the user clicked on
+* Search Page
+   * (Read/GET) Query items matching the keyword the user searched for
+* Profile Page
+   * (Read/GET) Query items in user's inventory 
