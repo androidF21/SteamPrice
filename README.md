@@ -83,11 +83,21 @@ https://www.figma.com/proto/OWiF97lcB3pdI49SoBXHmX/SteamPrice-Design-Theory?node
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
+User
+
 | Property  | Type | Descripion |
 | ------------- | ------------- | ------------- |
 | name  | String  | name of the user logged in |
 | inventory value  | Number  | total value of all items in inventory |
 | profile picture  | File  | profile picture of the user  |
+
+Item
+
+| Property  | Type | Descripion |
+| ------------- | ------------- | ------------- |
+| name  | String  | name of the item |
+| price  | Number  | price of the item |
+| item picture  | File  | picture of the item  |
 
 ### Networking
 - [Add list of network requests by screen ]
