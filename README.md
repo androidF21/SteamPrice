@@ -81,7 +81,6 @@ Direct link: https://www.figma.com/file/OWiF97lcB3pdI49SoBXHmX/SteamPrice-Design
 https://www.figma.com/proto/OWiF97lcB3pdI49SoBXHmX/SteamPrice-Design-Theory?node-id=2%3A8&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A8&show-proto-sidebar=1
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
 User
 
