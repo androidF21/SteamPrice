@@ -88,6 +88,7 @@ User
 | ------------- | ------------- | ------------- |
 | name  | String  | name of the user logged in |
 | inventory value  | Number  | total value of all items in inventory |
+| inventory items  | String  | list of all items in inventory on last refresh |
 | profile picture  | File  | profile picture of the user  |
 
 Item
@@ -95,8 +96,11 @@ Item
 | Property  | Type | Descripion |
 | ------------- | ------------- | ------------- |
 | name  | String  | name of the item |
-| price  | Number  | price of the item |
+| price  | Number  | current market price of the item |
+| item collection  | String | collection the item belongs to or collection of the case |
+| item wear  | String | wear value of the item if it is a weapon skin  |
 | item picture  | File  | picture of the item  |
+| item type  | String  | case/capsule or weapon skin  |
 
 ### Networking
 * Login Page
