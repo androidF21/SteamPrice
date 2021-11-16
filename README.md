@@ -112,4 +112,5 @@ Item
 * Search Page
    * (Read/GET) Query items matching the keyword the user searched for
 * Profile Page
-   * (Read/GET) Query items in user's inventory 
+   * (Read/GET) Query items in user's inventory through steam api 
+   * (Read/GET) Get total inventory price from backpack.tf api
