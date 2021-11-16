@@ -108,7 +108,7 @@ Item
 * Feed Page
    * (Read/GET) Query top 20 items currently sold on the cs:go steam community market
 * Item Detail Page
-   * (Read/GET) Query specific item that the user clicked on
+   * (Read/GET) Query specific item and details of the item that the user clicked on
 * Search Page
    * (Read/GET) Query items matching the keyword the user searched for
 * Profile Page
