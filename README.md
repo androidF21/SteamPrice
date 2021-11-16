@@ -114,3 +114,4 @@ Item
 * Profile Page
    * (Read/GET) Query items in user's inventory through steam api 
    * (Read/GET) Get total inventory price from backpack.tf api
+   * (Update/PUT) Update user's stored inventory if inventory is refreshed
