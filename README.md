@@ -106,7 +106,7 @@ Item
 * Login Page
    * (Read/GET) Query logged in user object
 * Feed Page
-   * (Read/GET) Query items currently in the market
+   * (Read/GET) Query top 20 items currently sold on the cs:go steam community market
 * Item Detail Page
    * (Read/GET) Query specific item that the user clicked on
 * Search Page
