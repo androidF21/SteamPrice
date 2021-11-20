@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CsgoMoney</string>
+    <string name="textfield_label">Username</string>
+    <string name="textfield_label1">Password</string>
 </resources>
