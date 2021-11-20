@@ -87,18 +87,19 @@
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
-   <!-- <com.google.android.material.textfield.TextInputLayout
+   <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="SteamID"
+       android:textColorHint="@color/black"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:hintTextColor="@color/black"
+        
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilRPass1">
@@ -108,7 +109,7 @@
             android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
-    </com.google.android.material.textfield.TextInputLayout> -->
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnReg"
@@ -123,7 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilRPass1" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

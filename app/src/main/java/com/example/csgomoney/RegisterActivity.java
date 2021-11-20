@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     public EditText tilRUser;
     public EditText tilRPass;
     private Button btnReg;
-    //public EditText tilSID;
+    public EditText tilSID;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         tilRUser = findViewById(R.id.tilRUser);
         tilRPass = findViewById(R.id.tilRPass);
-        //tilSID  = findViewById(R.id.tilRPass);
+        tilSID  = findViewById(R.id.tilRPass);
         btnReg = findViewById(R.id.btnReg);
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,25 +36,28 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.i(TAG,"Register Button");
                 String newUser = tilRUser.getText().toString();
                 String newPass = tilRPass.getText().toString();
-                registerUser(newUser,newPass);
+                String SteamID = tilSID.getText().toString();
+                registerUser(newUser,newPass,SteamID);
             }
         });
 
     }
 
-    private void registerUser(String newUser, String newPass) {
+    private void registerUser(String newUser, String newPass,String SteamID) {
         ParseUser nUser = new ParseUser();
         nUser.setUsername(newUser);
         nUser.setPassword(newPass);
+        nUser.put("SteamID",SteamID);
         nUser.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
                 if(e != null){
-                    Log.i(TAG,"Issue with Registering");
+                    Log.i(TAG,"Issue with Registering" + e);
                     return;
                 }
                 tilRUser.setText("");
                 tilRPass.setText("");
+                tilSID.setText("");
                 Toast.makeText(RegisterActivity.this, newUser+" Registered", Toast.LENGTH_SHORT).show();
             }
         });
