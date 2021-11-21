@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_register);
         tilRUser = findViewById(R.id.tilRUser);
         tilRPass = findViewById(R.id.tilRPass);
