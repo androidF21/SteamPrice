@@ -105,6 +105,7 @@ Item
 ### Networking
 * Login Page
    * (Read/GET) Query logged in user object
+   * https://imgur.com/FMV2o36.gif
 * Feed Page
    * (Read/GET) Query top 20 items currently sold on the cs:go steam community market
 * Item Detail Page
