@@ -63,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 JSONObject jsonObject=json.jsonObject;
                                 try {
                                     items.get(finalI).setPrice(jsonObject.getString("median_price"));
+                                    itemAdapter.notifyDataSetChanged();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
