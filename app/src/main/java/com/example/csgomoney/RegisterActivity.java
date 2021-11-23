@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         tilRUser = findViewById(R.id.tilRUser);
         tilRPass = findViewById(R.id.tilRPass);
-        tilSID  = findViewById(R.id.tilRPass);
+        tilSID  = findViewById(R.id.tilSID);
         btnReg = findViewById(R.id.btnReg);
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override

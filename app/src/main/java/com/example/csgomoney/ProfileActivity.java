@@ -15,6 +15,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.csgomoney.adapters.ItemAdapter;
 import com.example.csgomoney.models.Item;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,8 +31,10 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String TAG="ProfileActivity";
     List<Item> items;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ParseUser user=ParseUser.getCurrentUser();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
@@ -61,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("https://steamcommunity.com/inventory/76561198174398625/730/2?l=english&count=5000", new JsonHttpResponseHandler() {
+        client.get("https://steamcommunity.com/inventory/"+(String) user.get("SteamID")+"/730/2?l=english&count=5000", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.d("Success", TAG);
