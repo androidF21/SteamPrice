@@ -25,27 +25,27 @@ import java.util.List;
 
 import okhttp3.Headers;
 
-public class ProfileActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    public static final String TAG="ProfileActivity";
+    public static final String TAG="HomeActivity";
     List<Item> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_home);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.profile);
+        bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.profile:
+                    case R.id.home:
                         return true;
                 }
                 return false;
@@ -61,42 +61,29 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("https://steamcommunity.com/inventory/76561198174398625/730/2?l=english&count=5000", new JsonHttpResponseHandler() {
+        client.get("https://steamcommunity.com/market/search/render/?appid=730&norender=1&count=30", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.d("Success", TAG);
                 JSONObject jsonObject=json.jsonObject;
                 try {
-                    JSONArray results=jsonObject.getJSONArray("descriptions");
+                    JSONArray results=jsonObject.getJSONArray("results");
                     for(int i=0;i<results.length();i++){
-                        if(results.getJSONObject(i).getInt("marketable")==1) {
-                            items.add(new Item(results.getJSONObject(i).getString("name"),
-                                    results.getJSONObject(i).getString("market_hash_name"),
-                                    results.getJSONObject(i).getString("icon_url")
-                            ));
+                        int finalI=i;
+                        items.add(new Item(results.getJSONObject(i).getString("name"),
+                                results.getJSONObject(i).getString("hash_name"),
+                                results.getJSONObject(i).getJSONObject("asset_description").getString("icon_url")
+                        ));
+                        itemAdapter.notifyDataSetChanged();
+                        try {
+                            items.get(finalI).setPrice(results.getJSONObject(i).getString("sell_price_text"));
                             itemAdapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    }
-                    for(int i=0;i<items.size();i++){
-                        int finalI = i;
-                        client.get("https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=" + items.get(i).getMarket_hash_name(), new JsonHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Headers headers, JSON json) {
-                                JSONObject jsonObject=json.jsonObject;
-                                try {
-                                    items.get(finalI).setPrice(jsonObject.getString("median_price"));
-                                    itemAdapter.notifyDataSetChanged();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
 
-                            @Override
-                            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-
-                            }
-                        });
                     }
+
                 } catch (JSONException e) {
                     Log.e(TAG, "json exception", e);
                 }
