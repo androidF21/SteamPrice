@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c7d5e0">
+    android:background="#171A21">
 
 
     <ImageView
@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/counterprice" />
+        app:srcCompat="@drawable/counterprice_white" />
 
     <TextView
         android:id="@+id/textView"
@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:text="Steam Profile and Inventory must be Public.  "
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/textfield_label"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
@@ -55,7 +55,7 @@
             android:id="@+id/tilRUser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,7 +69,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:hint="Password"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
@@ -84,7 +84,7 @@
             android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
    <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="SteamID"
-       android:textColorHint="@color/black"
+       android:textColorHint="@color/white"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
@@ -108,7 +108,7 @@
             android:id="@+id/tilSID"
             android:layout_width="345dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -120,7 +120,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="Create An Account"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
