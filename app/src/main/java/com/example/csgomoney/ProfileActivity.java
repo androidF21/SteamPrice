@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -80,26 +81,22 @@ public class ProfileActivity extends AppCompatActivity {
                             itemAdapter.notifyDataSetChanged();
                         }
                     }
-                    for(int i=0;i<items.size();i++){
-                        int finalI = i;
-                        client.get("https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=" + items.get(i).getMarket_hash_name(), new JsonHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Headers headers, JSON json) {
-                                JSONObject jsonObject=json.jsonObject;
-                                try {
-                                    items.get(finalI).setPrice(jsonObject.getString("median_price"));
-                                    itemAdapter.notifyDataSetChanged();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                for(int i=0;i<items.size();i++)
+                                {
+                                    Thread.sleep(3000);
+                                    getPrices(i);
                                 }
-                            }
-
-                            @Override
-                            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                            } catch (Exception e) {
 
                             }
-                        });
-                    }
+                        }
+                    }).start();
+
                 } catch (JSONException e) {
                     Log.e(TAG, "json exception", e);
                 }
@@ -110,6 +107,27 @@ public class ProfileActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.d("Failure", TAG);
             }
+
+            public void getPrices(int index){
+                client.get("https://steamcommunity.com/market/priceoverview/?appid=730&currency=1&market_hash_name=" + items.get(index).getMarket_hash_name(), new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Headers headers, JSON json) {
+                        JSONObject jsonObject=json.jsonObject;
+                        try {
+                            items.get(index).setPrice(jsonObject.getString("median_price"));
+                            itemAdapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+
+                    }
+                });
+            }
+
         });
 
     }

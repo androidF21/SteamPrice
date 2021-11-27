@@ -61,7 +61,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
         public void bind(Item item) {
             tvName.setText(item.getName());
-            tvPrice.setText(item.getPrice());
+            if(item.getPrice()!=null) {
+                itemView.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+                tvPrice.setText(item.getPrice());
+            }
             Glide.with(context).load("http://cdn.steamcommunity.com/economy/image/"+item.getIcon()).into(ivIcon);
         }
     }
