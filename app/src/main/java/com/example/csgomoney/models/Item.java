@@ -5,6 +5,7 @@ public class Item {
     String market_hash_name;
     String icon;
     String price;
+    User loggedInUser;
 
     public Item(String name, String market_hash_name, String icon, String price){
         this.name=name;
@@ -17,6 +18,10 @@ public class Item {
         this.name=name;
         this.market_hash_name=market_hash_name;
         this.icon=icon;
+    }
+
+    public Item(User loggedInUser){
+        this.loggedInUser=loggedInUser;
     }
 
     public String getName() {
@@ -49,5 +54,13 @@ public class Item {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 }
