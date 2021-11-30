@@ -32,17 +32,17 @@ Steam Money is an Application that will allow users to check the price for the i
 
 **Required Must-have Stories**
 
-* User can login to the app 
-* User can see the feed of items
-* User can see their profile
-* User can search for items
-* When the User clicks on an item it pulls up a detailed view.  
+- [x] User can login to the app 
+- [x] User can see the feed of items
+- [x] User can see their profile
+- [x] User can search for items
+- [ ] When the User clicks on an item it pulls up a detailed view.  
 
 **Optional Nice-to-have Stories**
 
-* When you click on an item for the detail view the items in the collection come up
-* User can see a list of top items
-* Random Skin page
+- [ ] When you click on an item for the detail view the items in the collection come up
+- [ ] User can see a list of top items
+- [ ] Random Skin page
 
 ### 2. Screen Archetypes
 
