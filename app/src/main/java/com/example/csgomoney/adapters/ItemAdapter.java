@@ -1,11 +1,13 @@
 package com.example.csgomoney.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,10 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.csgomoney.LoginActivity;
+import com.example.csgomoney.ProfileActivity;
 import com.example.csgomoney.R;
 import com.example.csgomoney.models.Item;
 import com.example.csgomoney.models.User;
+import com.parse.ParseUser;
 
+import java.security.AccessController;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -75,6 +81,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tvUsername;
         TextView tvValue;
         TextView tvNumber;
+        Button btnLogout;
 
         public ViewHolderOne(@NonNull View itemView) {
             super(itemView);
@@ -82,14 +89,27 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvValue = itemView.findViewById(R.id.tvValue);
             tvNumber = itemView.findViewById(R.id.tvNumber);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
+            btnLogout = itemView.findViewById(R.id.btnLogout);
+
         }
 
         public void bind(User user) {
             tvUsername.setText(user.getName());
             tvValue.setText("Total Inventory Value:");
-            tvNumber.setText("$"+user.getValue());
+            tvNumber.setText("$" + user.getValue());
             Glide.with(context).load(user.getAvatar()).into(ivAvatar);
+            btnLogout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ParseUser.logOut();
+                    Intent i = new Intent(view.getContext(),LoginActivity.class);
+                    context.startActivity(i);
+                    //context.finish();
+                }
+            });
         }
+
+
     }
 
     static class ViewHolderTwo extends RecyclerView.ViewHolder {
