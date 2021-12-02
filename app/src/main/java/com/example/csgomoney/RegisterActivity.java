@@ -51,10 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         nUser.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
-                if(e != null){
-                    Log.i(TAG,"Issue with Registering" + e);
-                    return;
-                }
+                                                                 
                 tilRUser.setText("");
                 tilRPass.setText("");
                 tilSID.setText("");
