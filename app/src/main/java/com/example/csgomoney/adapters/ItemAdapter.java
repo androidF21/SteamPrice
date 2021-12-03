@@ -9,18 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.csgomoney.DetailActivity;
 import com.example.csgomoney.LoginActivity;
 import com.example.csgomoney.ProfileActivity;
 import com.example.csgomoney.R;
 import com.example.csgomoney.models.Item;
 import com.example.csgomoney.models.User;
 import com.parse.ParseUser;
+
+import org.parceler.Parcels;
 
 import java.security.AccessController;
 import java.util.List;
@@ -113,6 +117,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     static class ViewHolderTwo extends RecyclerView.ViewHolder {
+        RelativeLayout container;
         ImageView ivIcon;
         TextView tvName;
         TextView tvPrice;
@@ -122,6 +127,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             ivIcon = itemView.findViewById(R.id.ivIcon);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Item item) {
@@ -131,6 +137,15 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 tvPrice.setText(item.getPrice());
             }
             Glide.with(context).load("http://cdn.steamcommunity.com/economy/image/" + item.getIcon()).into(ivIcon);
+
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("item", Parcels.wrap(item));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

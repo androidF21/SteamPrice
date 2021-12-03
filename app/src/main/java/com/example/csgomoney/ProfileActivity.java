@@ -25,7 +25,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
 import okhttp3.Headers;
+import okhttp3.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -33,7 +35,6 @@ public class ProfileActivity extends AppCompatActivity {
     List<Item> items;
     User loggedInUser;
     Thread myThread;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 }
                             }
 
-                            myThread=new Thread(new Runnable() {
+                            myThread =new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     try {
@@ -141,7 +142,7 @@ public class ProfileActivity extends AppCompatActivity {
                             public void onSuccess(int statusCode, Headers headers, JSON json) {
                                 JSONObject jsonObject = json.jsonObject;
                                 try {
-                                    items.get(index).setPrice(jsonObject.getString("median_price"));
+                                    items.get(index).setPrice(jsonObject.getString("lowest_price"));
                                     itemAdapter.notifyDataSetChanged();
                                     Log.v("TAG", "Prices retrieved");
                                 } catch (JSONException e) {

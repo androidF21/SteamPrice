@@ -1,11 +1,17 @@
 package com.example.csgomoney.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Item {
     String name;
     String market_hash_name;
     String icon;
     String price;
     User loggedInUser;
+
+    // empty constructor for parcelable
+    public Item() { }
 
     public Item(String name, String market_hash_name, String icon, String price){
         this.name=name;

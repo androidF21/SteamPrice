@@ -1,5 +1,8 @@
 package com.example.csgomoney.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class User {
     String name;
     String value;
