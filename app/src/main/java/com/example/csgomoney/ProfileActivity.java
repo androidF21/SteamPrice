@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String TAG = "ProfileActivity";
     List<Item> items;
     User loggedInUser;
+    Thread myThread;
 
 
     @Override
@@ -48,10 +49,12 @@ public class ProfileActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.search:
+                        myThread.interrupt();
                         startActivity(new Intent(getApplicationContext(),SearchActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
+                        myThread.interrupt();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
@@ -105,20 +108,21 @@ public class ProfileActivity extends AppCompatActivity {
                                 }
                             }
 
-                            new Thread(new Runnable() {
+                            myThread=new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     try {
                                         for (int i = 0; i < items.size(); i++) {
-                                            Thread.sleep(3000);
                                             Log.v(TAG, "Attempting to get prices...");
                                             getPrices(i);
+                                            Thread.sleep(3000);
                                         }
                                     } catch (Exception e) {
 
                                     }
                                 }
-                            }).start();
+                            });
+                            myThread.start();
 
                         } catch (JSONException e) {
                             Log.e(TAG, "json exception", e);
