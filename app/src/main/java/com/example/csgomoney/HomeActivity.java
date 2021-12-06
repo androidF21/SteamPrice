@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -74,9 +75,18 @@ public class HomeActivity extends AppCompatActivity {
                     JSONArray results=jsonObject.getJSONArray("results");
                     for(int i=0;i<results.length();i++){
                         int finalI=i;
+                        String description="";
+                        JSONArray temp=results.getJSONObject(i).getJSONObject("asset_description").getJSONArray("descriptions");
+                        for(int j=0;j<temp.length();j++){
+                            if(temp.getJSONObject(j).getString("value").isEmpty()==false){
+                                description+= Html.fromHtml(temp.getJSONObject(j).getString("value"));
+                                description+="\n";
+                            }
+                        }
                         items.add(new Item(results.getJSONObject(i).getString("name"),
                                 results.getJSONObject(i).getString("hash_name"),
-                                results.getJSONObject(i).getJSONObject("asset_description").getString("icon_url")
+                                results.getJSONObject(i).getJSONObject("asset_description").getString("icon_url"),
+                                description
                         ));
                         itemAdapter.notifyDataSetChanged();
                         try {

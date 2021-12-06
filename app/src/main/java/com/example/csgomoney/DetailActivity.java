@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView itemName;
     ImageView itemImage;
     TextView itemPrice;
+    TextView tvDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,14 @@ public class DetailActivity extends AppCompatActivity {
         itemName = findViewById(R.id.itemName);
         itemImage = findViewById(R.id.itemImage);
         itemPrice = findViewById(R.id.itemPrice);
+        tvDescription = findViewById(R.id.tvDescription);
 
         Item item = Parcels.unwrap(getIntent().getParcelableExtra("item"));
         itemName.setText(item.getName());
         itemPrice.setText(item.getPrice());
         Glide.with(this).load("http://cdn.steamcommunity.com/economy/image/" + item.getIcon()).into(itemImage);
+        tvDescription.setText(item.getDescription());
+        tvDescription.setMovementMethod(new ScrollingMovementMethod());
 
     }
 }

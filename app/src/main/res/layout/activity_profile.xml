@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#171A21"
     tools:context=".ProfileActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -16,10 +17,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp"
-        android:paddingBottom="70dp"
-        android:background="#171A21" />
+        android:background="#171A21"
+        android:paddingBottom="70dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

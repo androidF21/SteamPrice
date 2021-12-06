@@ -24,11 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivAvatar"
         android:textColor="#FFFFFF"
-        android:textSize="21sp"
+        android:textSize="18sp"
         tools:text="Username" />
 
     <TextView
@@ -36,11 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
         android:layout_toEndOf="@+id/ivAvatar"
         android:textColor="#FFFFFF"
-        android:textSize="21sp"
+        android:textSize="18sp"
         tools:text="Total Inventory Value" />
 
     <TextView
@@ -48,11 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="70dp"
         android:layout_toEndOf="@+id/ivAvatar"
         android:textColor="#4CAF50"
-        android:textSize="21sp"
+        android:textSize="18sp"
         tools:text="Total Inventory Value" />
 
     <Button
@@ -62,8 +62,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
         android:background="#1B2838"
         android:text="Logout"
+        android:textSize="10sp"
         app:iconTint="#1B2838" />
 
 </RelativeLayout>

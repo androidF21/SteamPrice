@@ -8,15 +8,24 @@ public class Item {
     String market_hash_name;
     String icon;
     String price;
+    String description;
     User loggedInUser;
 
     // empty constructor for parcelable
     public Item() { }
 
-    public Item(String name, String market_hash_name, String icon, String price){
+    public Item(String name, String market_hash_name, String icon, String description){
         this.name=name;
         this.market_hash_name=market_hash_name;
         this.icon=icon;
+        this.description=description;
+    }
+
+    public Item(String name, String market_hash_name, String icon, String description, String price){
+        this.name=name;
+        this.market_hash_name=market_hash_name;
+        this.icon=icon;
+        this.description=description;
         this.price=price;
     }
 
@@ -68,5 +77,13 @@ public class Item {
 
     public void setLoggedInUser(User loggedInUser) {
         this.loggedInUser = loggedInUser;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
