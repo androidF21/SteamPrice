@@ -144,6 +144,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("item", Parcels.wrap(item));
                     context.startActivity(i);
+                    //Log.v("Heres the description: ", item.getDescription());
                 }
             });
         }

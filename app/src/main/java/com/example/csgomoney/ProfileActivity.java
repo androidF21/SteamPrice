@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
+import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.csgomoney.adapters.ItemAdapter;
 import com.example.csgomoney.models.Item;
@@ -23,7 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Headers;
@@ -74,6 +78,20 @@ public class ProfileActivity extends AppCompatActivity {
         loggedInUser = new User();
 
         AsyncHttpClient client = new AsyncHttpClient();
+//        RequestParams jsonParams = new RequestParams();
+//        jsonParams.put("token", "619b5b289ec480409601fc66");
+//        client.post("https://backpack.tf/api/inventory/"+SteamID+"/refresh", jsonParams.toString(), new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Headers headers, JSON json) {
+//                Log.d(TAG, "Refresh successful");
+//            }
+//
+//            @Override
+//            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+//                Log.d(TAG, "Failed to refresh: "+response);
+//            }
+//        });
+
         client.get("https://backpack.tf/api/users/info/v1?steamids="+SteamID+"&key=619b5b289ec480409601fc66", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -100,10 +118,20 @@ public class ProfileActivity extends AppCompatActivity {
                         try {
                             JSONArray results = jsonObject.getJSONArray("descriptions");
                             for (int i = 0; i < results.length(); i++) {
+                                String description="";
                                 if (results.getJSONObject(i).getInt("marketable") == 1) {
+                                    JSONArray temp=results.getJSONObject(i).getJSONArray("descriptions");
+                                    for(int j=0;j<temp.length();j++){
+                                        if(temp.getJSONObject(j).getString("value").isEmpty()==false) {
+                                            description += Html.fromHtml(temp.getJSONObject(j).getString("value"));
+                                            description += "\n";
+                                        }
+                                    }
+                                    Log.v(TAG, description);
                                     items.add(new Item(results.getJSONObject(i).getString("name"),
                                             results.getJSONObject(i).getString("market_hash_name"),
-                                            results.getJSONObject(i).getString("icon_url")
+                                            results.getJSONObject(i).getString("icon_url"),
+                                            description
                                     ));
                                     itemAdapter.notifyDataSetChanged();
                                 }

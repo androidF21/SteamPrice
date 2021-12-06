@@ -8,21 +8,21 @@
     tools:context=".DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#1B2838"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+        android:background="#1B2838"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="5dp">
 
         <TextView
-            android:gravity="center"
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="5dp"
+            android:gravity="center"
             android:text="Item Name"
             android:textColor="#FFFFFF"
             android:textSize="25dp"
@@ -48,10 +48,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="84dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="100dp"
             android:text="Price"
             android:textColor="#FFFFFF"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/itemImage"
             app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:autoText="false"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemImage"
+            android:scrollbars = "vertical"
+            android:maxLines = "25"
+            tools:text="Description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
