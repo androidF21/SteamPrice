@@ -130,7 +130,6 @@ public class ProfileActivity extends AppCompatActivity {
                                             description += "\n";
                                         }
                                     }
-                                    Log.v(TAG, description);
                                     items.add(new Item(results.getJSONObject(i).getString("name"),
                                             results.getJSONObject(i).getString("market_hash_name"),
                                             results.getJSONObject(i).getString("icon_url"),
@@ -197,6 +196,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        myThread.interrupt();
     }
 
 }

@@ -7,5 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#66C0F4</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FFFFFF</color>
 </resources>
