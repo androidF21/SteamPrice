@@ -1,6 +1,7 @@
 Original App Design Project - README Template
 ===
 # Milestone 2 showcase
+<img src="https://github.com/androidF21/SteamPrice/blob/main/counterpricesprint3.gif" width=300>
 <img src="https://github.com/androidF21/SteamPrice/blob/main/counterpricemilestonetwo.gif" width=300>
 
 # Milestone 1 showcase
