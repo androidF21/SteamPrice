@@ -41,7 +41,8 @@ Steam Money is an Application that will allow users to check the price for the i
 
 **Optional Nice-to-have Stories**
 
-- [x] When you click on an item for the detail view the items in the collection come up
+- [x] When you click on an case for the detailed view, the items within the case are displayed
+- [ ] For every item in a case, the name of the item text color is set to the color corresponding to its rarity.
 - [x] User can see a list of top items
 - [ ] Random Skin page
 - [ ] Cache profile page items and prices
