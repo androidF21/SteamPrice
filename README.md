@@ -51,9 +51,8 @@ Steam Money is an Application that will allow users to check the price for the i
 
 * Login
    * When the user opens the app for the first time they are prompted to login.   This allows access to their profile. 
-* Feed
-   * This will have sections based on the different items in the market
-   * This will allow for users to look through different items based on what they are looking for
+* Home
+   * Shows the top 30 items currenty being bought and sold on the steam market for the game Counter Strike Global Offensive
    * When an item is clicked on it will bring it into a detailed page. 
 * Item Detail Page
    * When a user clicks on an item it will launch a detailed view of the item, it will have the price of the item, the collection, and more detail about it other than the name and the price.
