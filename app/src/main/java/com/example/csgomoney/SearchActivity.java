@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +26,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import okhttp3.Headers;
@@ -36,8 +39,8 @@ public class SearchActivity extends AppCompatActivity {
     List<Item> items;
     EditText userQueryInput;
     ProgressBar loadingSearch;
-
     ImageButton searchButton;
+    Thread myThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +59,12 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.profile:
+                        myThread.interrupt();
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
+                        myThread.interrupt();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
@@ -80,6 +85,11 @@ public class SearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (myThread != null) {
+                    if (myThread.isAlive()) {
+                        myThread.interrupt();
+                    }
+                }
                 loadingSearch.setVisibility(View.VISIBLE);
                 items.clear();
                 String userQuery = userQueryInput.getText().toString();
@@ -105,8 +115,22 @@ public class SearchActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                             }
+                            myThread =new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        for (int i = 0; i < items.size(); i++) {
+                                            Log.v(TAG, "Attempting to get description...");
+                                            getDescriptions(i);
+                                            Thread.sleep(3100);
+                                        }
+                                    } catch (Exception e) {
+
+                                    }
+                                }
+                            });
+                            myThread.start();
 
                         } catch (JSONException e) {
                             Log.e(TAG, "json exception", e);
@@ -117,6 +141,58 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                         Log.d("Failure", TAG);
+                    }
+
+                    public void getDescriptions(int index) {
+                        String hashName= items.get(index).getMarket_hash_name();
+                        client.get("https://steamcommunity.com/market/listings/730/"+hashName+"/render?start=0&count=1&currency=1&format=json&norender=1", new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Headers headers, JSON json) {
+                                JSONObject jsonObject = json.jsonObject;
+                                try {
+                                    JSONObject results = jsonObject.getJSONObject("assets");
+                                    results = results.getJSONObject("730");
+                                    results = results.getJSONObject("2");
+                                    Iterator<String> test = results.keys();
+                                    String test2 = "";
+                                    JSONObject value = null;
+                                    while (test.hasNext()) {
+                                        String key = test.next();
+                                        try {
+                                            value = results.getJSONObject(key);
+                                            test2 = value.toString();
+                                        } catch (JSONException e){
+
+                                        }
+                                    }
+                                    JSONArray results2 = value.getJSONArray("descriptions");
+
+                                    String description = "";
+                                    for(int j=0;j<results2.length();j++){
+                                        if(results2.getJSONObject(j).getString("value").isEmpty()==false) {
+                                            if ( j != 6 ) {
+                                                description += Html.fromHtml(results2.getJSONObject(j).getString("value"));
+                                                description += "\n";
+                                            }
+                                            if (j==6 && (results2.getJSONObject(j).has("color"))){
+                                                description += Html.fromHtml(results2.getJSONObject(j).getString("value"));
+                                                description += "\n";
+                                            }
+                                        }
+                                    }
+                                    items.get(index).setDescription(description);
+                                    itemAdapter.notifyDataSetChanged();
+                                    Log.v("TAG", "Description Retrieved");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+
+                            }
+                        });
                     }
                 });
             }

@@ -79,8 +79,16 @@ public class HomeActivity extends AppCompatActivity {
                         JSONArray temp=results.getJSONObject(i).getJSONObject("asset_description").getJSONArray("descriptions");
                         for(int j=0;j<temp.length();j++){
                             if(temp.getJSONObject(j).getString("value").isEmpty()==false){
-                                description+= Html.fromHtml(temp.getJSONObject(j).getString("value"));
-                                description+="\n";
+                                if (j!=6) {
+                                    description += Html.fromHtml(temp.getJSONObject(j).getString("value"));
+                                    description += "\n";
+                                }
+                                if (j==6) {
+                                    if(temp.getJSONObject(j).has("color")){
+                                        description += Html.fromHtml(temp.getJSONObject(j).getString("value"));
+                                        description += "\n";
+                                    }
+                                }
                             }
                         }
                         items.add(new Item(results.getJSONObject(i).getString("name"),

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +20,7 @@ public class DetailActivity extends AppCompatActivity {
     ImageView itemImage;
     TextView itemPrice;
     TextView tvDescription;
+    ProgressBar loadingDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class DetailActivity extends AppCompatActivity {
         itemImage = findViewById(R.id.itemImage);
         itemPrice = findViewById(R.id.itemPrice);
         tvDescription = findViewById(R.id.tvDescription);
+        loadingDesc = findViewById(R.id.loadingDesc);
 
         Item item = Parcels.unwrap(getIntent().getParcelableExtra("item"));
         itemName.setText(item.getName());
@@ -35,6 +39,13 @@ public class DetailActivity extends AppCompatActivity {
         Glide.with(this).load("http://cdn.steamcommunity.com/economy/image/" + item.getIcon()).into(itemImage);
         tvDescription.setText(item.getDescription());
         tvDescription.setMovementMethod(new ScrollingMovementMethod());
+
+        loadingDesc.setVisibility(View.VISIBLE);
+
+        if (tvDescription.getText()!=null){
+            loadingDesc.setVisibility(View.INVISIBLE);
+        }
+
 
     }
 }

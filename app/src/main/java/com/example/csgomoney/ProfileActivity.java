@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.RequestParams;
@@ -46,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         String SteamID=(String)user.get("SteamID");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
