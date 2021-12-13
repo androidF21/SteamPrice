@@ -1,6 +1,11 @@
 Original App Design Project - README Template
 ===
+# Milestone 3 showcase
+
+<img src="https://github.com/androidF21/SteamPrice/blob/main/counterpricewalkthrough3.gif" width=300>
+
 # Milestone 2 showcase
+
 <img src="https://github.com/androidF21/SteamPrice/blob/main/counterpricemilestonetwo.gif" width=300>
 
 # Milestone 1 showcase
@@ -36,12 +41,13 @@ Steam Money is an Application that will allow users to check the price for the i
 - [x] User can see the feed of items
 - [x] User can see their profile
 - [x] User can search for items
-- [ ] When the User clicks on an item it pulls up a detailed view.  
+- [x] When the User clicks on an item it pulls up a detailed view.  
 
 **Optional Nice-to-have Stories**
 
-- [ ] When you click on an item for the detail view the items in the collection come up
-- [ ] User can see a list of top items
+- [x] When you click on an case for the detailed view, the items within the case are displayed
+- [ ] For every item in a case, the name of the item text color is set to the color corresponding to its rarity.
+- [x] User can see a list of top items
 - [ ] Random Skin page
 - [ ] Cache profile page items and prices
 
@@ -49,9 +55,8 @@ Steam Money is an Application that will allow users to check the price for the i
 
 * Login
    * When the user opens the app for the first time they are prompted to login.   This allows access to their profile. 
-* Feed
-   * This will have sections based on the different items in the market
-   * This will allow for users to look through different items based on what they are looking for
+* Home
+   * Shows the top 30 items currenty being bought and sold on the steam market for the game Counter Strike Global Offensive
    * When an item is clicked on it will bring it into a detailed page. 
 * Item Detail Page
    * When a user clicks on an item it will launch a detailed view of the item, it will have the price of the item, the collection, and more detail about it other than the name and the price.

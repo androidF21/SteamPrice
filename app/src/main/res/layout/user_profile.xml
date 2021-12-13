@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentTop="false"
     android:layout_marginBottom="10dp"
     android:background="#1B2838">
 
@@ -16,7 +17,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
+        android:background="@drawable/blueborder"
+        android:cropToPadding="true"
+        android:paddingLeft="1dp"
+        android:paddingTop="1dp"
+        android:paddingRight="1dp"
+        android:paddingBottom="1dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -37,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_toEndOf="@+id/ivAvatar"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -49,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         android:layout_toEndOf="@+id/ivAvatar"
         android:textColor="#4CAF50"
         android:textSize="18sp"
