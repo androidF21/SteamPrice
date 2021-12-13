@@ -2,6 +2,7 @@ package com.example.csgomoney.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -131,7 +132,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void bind(Item item) {
-            tvName.setText(item.getName());
+            tvName.setText(Html.fromHtml(item.getName()));
             if (item.getPrice() != null) {
                 itemView.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
                 tvPrice.setText(item.getPrice());

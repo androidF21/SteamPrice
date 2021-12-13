@@ -63,14 +63,14 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:autoText="false"
+            android:maxLines="25"
+            android:scrollbars="vertical"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/itemImage"
-            android:scrollbars = "vertical"
-            android:maxLines = "25"
             tools:text="Description" />
 
         <ProgressBar

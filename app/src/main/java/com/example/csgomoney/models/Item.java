@@ -9,6 +9,7 @@ public class Item {
     String icon;
     String price;
     String description;
+    String NameColor;
     User loggedInUser;
 
     // empty constructor for parcelable
@@ -86,4 +87,6 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setNameColor(String NameColor){ this.NameColor = NameColor;}
 }

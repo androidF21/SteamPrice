@@ -80,18 +80,37 @@ public class HomeActivity extends AppCompatActivity {
                         for(int j=0;j<temp.length();j++){
                             if(temp.getJSONObject(j).getString("value").isEmpty()==false){
                                 if (j!=6) {
-                                    description += Html.fromHtml(temp.getJSONObject(j).getString("value"));
-                                    description += "\n";
+                                    if(temp.getJSONObject(j).has("color")) {
+                                        String colorHTML = "";
+                                        colorHTML += Html.fromHtml(temp.getJSONObject(j).getString("color"));
+                                        description+= "<font color='#"+colorHTML+"'>"+temp.getJSONObject(j).getString("value")+"</font>";
+                                        description+="<br>";
+                                    }
+                                    else {
+                                        description += Html.fromHtml(temp.getJSONObject(j).getString("value"));
+                                        description += "<br>";
+                                    }
                                 }
                                 if (j==6) {
                                     if(temp.getJSONObject(j).has("color")){
-                                        description += Html.fromHtml(temp.getJSONObject(j).getString("value"));
-                                        description += "\n";
+                                        String colorHTML = "";
+                                        colorHTML += Html.fromHtml(temp.getJSONObject(j).getString("color"));
+                                        description+= "<font color='#"+colorHTML+"'>"+temp.getJSONObject(j).getString("value")+"</font>";
+                                        description+="<br>";
                                     }
                                 }
                             }
                         }
-                        items.add(new Item(results.getJSONObject(i).getString("name"),
+                        String nameColor=results.getJSONObject(i).getJSONObject("asset_description").getString("name_color");
+                        String finalColor="";
+                        if (nameColor.equals("D2D2D2")){
+                            finalColor="ffffff";
+                        }
+                        else {
+                            finalColor=nameColor;
+                        }
+                        String nameWcolor = "<font color='#" + finalColor + "'>" + results.getJSONObject(i).getString("name") + "</font>";
+                        items.add(new Item(nameWcolor,
                                 results.getJSONObject(i).getString("hash_name"),
                                 results.getJSONObject(i).getJSONObject("asset_description").getString("icon_url"),
                                 description

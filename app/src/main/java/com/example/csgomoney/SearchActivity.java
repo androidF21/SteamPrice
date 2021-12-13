@@ -103,7 +103,16 @@ public class SearchActivity extends AppCompatActivity {
                             JSONArray results = jsonObject.getJSONArray("results");
                             for (int i = 0; i < results.length(); i++) {
                                 int finalI = i;
-                                items.add(new Item(results.getJSONObject(i).getString("name"),
+                                String nameColor=results.getJSONObject(i).getJSONObject("asset_description").getString("name_color");
+                                String finalColor="";
+                                if (nameColor.equals("D2D2D2")){
+                                    finalColor="ffffff";
+                                }
+                                else {
+                                    finalColor=nameColor;
+                                }
+                                String nameWcolor = "<font color='#" + finalColor + "'>" + results.getJSONObject(i).getString("name") + "</font>";
+                                items.add(new Item(nameWcolor,
                                         results.getJSONObject(i).getString("hash_name"),
                                         results.getJSONObject(i).getJSONObject("asset_description").getString("icon_url")
                                 ));
@@ -171,12 +180,22 @@ public class SearchActivity extends AppCompatActivity {
                                     for(int j=0;j<results2.length();j++){
                                         if(results2.getJSONObject(j).getString("value").isEmpty()==false) {
                                             if ( j != 6 ) {
-                                                description += Html.fromHtml(results2.getJSONObject(j).getString("value"));
-                                                description += "\n";
+                                                if(results2.getJSONObject(j).has("color")) {
+                                                    String colorHTML = "";
+                                                    colorHTML += Html.fromHtml(results2.getJSONObject(j).getString("color"));
+                                                    description+= "<font color='#"+colorHTML+"'>"+results2.getJSONObject(j).getString("value")+"</font>";
+                                                    description+="<br>";
+                                                }
+                                                else {
+                                                    description += Html.fromHtml(results2.getJSONObject(j).getString("value"));
+                                                    description += "<br>";
+                                                }
                                             }
                                             if (j==6 && (results2.getJSONObject(j).has("color"))){
-                                                description += Html.fromHtml(results2.getJSONObject(j).getString("value"));
-                                                description += "\n";
+                                                String colorHTML = "";
+                                                colorHTML += Html.fromHtml(results2.getJSONObject(j).getString("color"));
+                                                description+= "<font color='#"+colorHTML+"'>"+results2.getJSONObject(j).getString("value")+"</font>";
+                                                description+="<br>";
                                             }
                                         }
                                     }

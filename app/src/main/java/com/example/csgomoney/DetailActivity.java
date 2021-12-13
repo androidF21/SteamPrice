@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,10 +36,10 @@ public class DetailActivity extends AppCompatActivity {
         loadingDesc = findViewById(R.id.loadingDesc);
 
         Item item = Parcels.unwrap(getIntent().getParcelableExtra("item"));
-        itemName.setText(item.getName());
+        itemName.setText(Html.fromHtml(item.getName()));
         itemPrice.setText(item.getPrice());
         Glide.with(this).load("http://cdn.steamcommunity.com/economy/image/" + item.getIcon()).into(itemImage);
-        tvDescription.setText(item.getDescription());
+        tvDescription.setText(Html.fromHtml(item.getDescription()));
         tvDescription.setMovementMethod(new ScrollingMovementMethod());
 
         loadingDesc.setVisibility(View.VISIBLE);
