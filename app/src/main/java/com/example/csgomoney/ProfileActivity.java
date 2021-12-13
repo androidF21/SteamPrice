@@ -149,7 +149,6 @@ public class ProfileActivity extends AppCompatActivity {
                                     }
                                     String nameWcolor = "<font color='#" + finalColor + "'>" + results.getJSONObject(i).getString("name") + "</font>";
                                     items.add(new Item(nameWcolor,
-                                    items.add(new Item(results.getJSONObject(i).getString("name"),
                                             results.getJSONObject(i).getString("market_hash_name"),
                                             results.getJSONObject(i).getString("icon_url"),
                                             description
