@@ -2,6 +2,7 @@ Original App Design Project - README Template
 ===
 # Milestone 4: EXTRAS showcase
 Description UI greatly changed along with recycler view of items by adding a lot of color pulled from the api requests. There were changes in many different areas of the ui surrounding items.
+
 <img src="https://github.com/androidF21/SteamPrice/blob/main/counterpriceEXTRASPRINT.gif" width=300>
 
 # Milestone 3 showcase
