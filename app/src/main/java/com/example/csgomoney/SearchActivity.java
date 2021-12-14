@@ -140,7 +140,7 @@ public class SearchActivity extends AppCompatActivity {
                                         for (int i = 0; i < items.size(); i++) {
                                             Log.v(TAG, "Attempting to get description...");
                                             getDescriptions(i);
-                                            Thread.sleep(3100);
+                                            Thread.sleep(3500);
                                         }
                                     } catch (Exception e) {
 

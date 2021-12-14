@@ -219,7 +219,11 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
-        myThread.interrupt();
+        if (myThread != null) {
+            if (myThread.isAlive()) {
+                myThread.interrupt();
+            }
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -54,17 +55,21 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-        tvDescription.setText(Html.fromHtml(item.getDescription()));
-        tvDescription.setMovementMethod(new ScrollingMovementMethod());
-
-
-
-        loadingDesc.setVisibility(View.VISIBLE);
-
-        if (tvDescription.getText()!=null){
-            loadingDesc.setVisibility(View.INVISIBLE);
+        if (item.getDescription()!=null) {
+            tvDescription.setText(Html.fromHtml(item.getDescription()));
+        }
+        else{
+            tvDescription.setText("Loading");
+            loadingDesc.setVisibility(View.VISIBLE);
         }
 
+        tvDescription.setMovementMethod(new ScrollingMovementMethod());
+        if (tvDescription.getText()=="Loading"){
+            loadingDesc.setVisibility(View.VISIBLE);
+        }
+        if (tvDescription.getText()!="Loading"){
+            loadingDesc.setVisibility(View.INVISIBLE);
+        }
 
     }
 }
