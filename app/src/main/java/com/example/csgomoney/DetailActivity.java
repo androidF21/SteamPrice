@@ -1,12 +1,14 @@
 package com.example.csgomoney;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,8 +41,24 @@ public class DetailActivity extends AppCompatActivity {
         itemName.setText(Html.fromHtml(item.getName()));
         itemPrice.setText(item.getPrice());
         Glide.with(this).load("http://cdn.steamcommunity.com/economy/image/" + item.getIcon()).into(itemImage);
+        itemImage.setBackground(ContextCompat.getDrawable(this,R.drawable.border));
+        String namesColor= (item.getName()).substring(0,22);
+        if (namesColor.equals("<font color='#CF6A32'>")) {
+            itemImage.setBackground(ContextCompat.getDrawable(this,R.drawable.stattrakborder));
+        }
+        if (namesColor.equals("<font color='#8650AC'>")) {
+            itemImage.setBackground(ContextCompat.getDrawable(this,R.drawable.purpleborder));
+        }
+        if (namesColor.equals("<font color='#FFD700'>")) {
+            itemImage.setBackground(ContextCompat.getDrawable(this,R.drawable.souvenirborder));
+        }
+
+
+
         tvDescription.setText(Html.fromHtml(item.getDescription()));
         tvDescription.setMovementMethod(new ScrollingMovementMethod());
+
+
 
         loadingDesc.setVisibility(View.VISIBLE);
 

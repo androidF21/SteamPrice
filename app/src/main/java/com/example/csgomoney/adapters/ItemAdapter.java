@@ -2,6 +2,8 @@ package com.example.csgomoney.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.text.Layout;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -118,6 +121,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     static class ViewHolderTwo extends RecyclerView.ViewHolder {
+        private static final String TAG = "SearchActivity";
         RelativeLayout container;
         ImageView ivIcon;
         TextView tvName;
@@ -138,7 +142,18 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 tvPrice.setText(item.getPrice());
             }
             Glide.with(context).load("http://cdn.steamcommunity.com/economy/image/" + item.getIcon()).into(ivIcon);
-
+            ivIcon.setBackground(ContextCompat.getDrawable(context,R.drawable.border));
+            String namesColor= (item.getName()).substring(0,22);
+            Log.v(TAG,namesColor);
+            if (namesColor.equals("<font color='#CF6A32'>")) {
+                ivIcon.setBackground(ContextCompat.getDrawable(context,R.drawable.stattrakborder));
+            }
+            if (namesColor.equals("<font color='#8650AC'>")) {
+                ivIcon.setBackground(ContextCompat.getDrawable(context,R.drawable.purpleborder));
+            }
+            if (namesColor.equals("<font color='#FFD700'>")) {
+                ivIcon.setBackground(ContextCompat.getDrawable(context,R.drawable.souvenirborder));
+            }
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
