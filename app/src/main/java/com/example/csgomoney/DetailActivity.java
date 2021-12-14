@@ -54,7 +54,6 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-
         tvDescription.setText(Html.fromHtml(item.getDescription()));
         tvDescription.setMovementMethod(new ScrollingMovementMethod());
 

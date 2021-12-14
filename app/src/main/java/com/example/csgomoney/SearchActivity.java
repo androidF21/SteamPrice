@@ -59,12 +59,20 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.profile:
-                        myThread.interrupt();
+                        if (myThread != null) {
+                            if (myThread.isAlive()) {
+                                myThread.interrupt();
+                            }
+                        }
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
-                        myThread.interrupt();
+                        if (myThread != null) {
+                            if (myThread.isAlive()) {
+                                myThread.interrupt();
+                            }
+                        }
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
