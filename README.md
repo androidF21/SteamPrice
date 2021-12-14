@@ -1,5 +1,9 @@
 Original App Design Project - README Template
 ===
+# Milestone 4: EXTRAS showcase
+
+<img src="https://github.com/androidF21/SteamPrice/blob/main/counterpriceEXTRASPRINT.gif" width=300>
+
 # Milestone 3 showcase
 
 <img src="https://github.com/androidF21/SteamPrice/blob/main/counterpricewalkthrough3.gif" width=300>
@@ -46,10 +50,10 @@ Steam Money is an Application that will allow users to check the price for the i
 **Optional Nice-to-have Stories**
 
 - [x] When you click on an case for the detailed view, the items within the case are displayed
-- [ ] For every item in a case, the name of the item text color is set to the color corresponding to its rarity.
+- [x] For every item in a case, the name of the item text color is set to the color corresponding to its rarity.
+- [x] Color code for souvenir, stattrak, and any other items such as knive skins
 - [x] User can see a list of top items
 - [ ] Random Skin page
-- [ ] Cache profile page items and prices
 
 ### 2. Screen Archetypes
 
